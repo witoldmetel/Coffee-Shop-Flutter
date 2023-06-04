@@ -7,6 +7,6 @@
 // ["Argentina", "Brazil"]
 List<String> countries = ["Argentina", "Brazil", "Canada", "Denmark"];
 
-// We also have sets and maps (dictionaries)
-var strings = {"a", "b", "c", "c"};
+// We also have sets and maps (dictionaries) 
+var strings = {"a", "b", "c", "c"}; // set not accept repetition
 var readWriteMap = {"foo": 1, "bar": 2};

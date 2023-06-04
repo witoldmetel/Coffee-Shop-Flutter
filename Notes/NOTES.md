@@ -99,3 +99,44 @@ playingWithTypes() {
   var message = "The $price price is ${otherPrice * 1.1}";
 }
 ```
+
+# Collections
+
+Dart includes several collections ready to use, here just the ones we will use
+
+```
+// Lists, we use List<Type> and the type of the collection inside the generic
+// The literal uses the [] constructor
+// ["Argentina", "Brazil"]
+List<String> countries = ["Argentina", "Brazil", "Canada", "Denmark"];
+
+// We also have sets and maps (dictionaries)
+var strings = {"a", "b", "c", "c"}; // set not accept repetition
+var readWriteMap = {"foo": 1, "bar": 2};
+```
+
+# Null Safety
+
+Null Safety is optional in the language and it was added later
+It's automatically enabled in current Flutter projects
+A String must have a string value, but a String? accepts null
+
+```
+// String myName;        // What's the value? Null? IMPOSSIBLE
+
+late String myName; // We express we will have a value later, before using it
+
+String? myLastname; // It can handle a null value
+```
+
+## Null operators
+
+```
+// print(myLastname.length);   // it doesn't work!
+
+// null manual override
+final lengthForSure = myLastname!.length;
+
+// Safe calls
+var length = myLastname?.length;
+```
