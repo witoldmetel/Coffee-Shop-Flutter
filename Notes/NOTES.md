@@ -1,3 +1,5 @@
+https://firtman.github.io/intro-flutter/
+
 # Basic Expressions
 
 Dart code looks in its first view as many other languages
@@ -139,4 +141,122 @@ final lengthForSure = myLastname!.length;
 
 // Safe calls
 var length = myLastname?.length;
+```
+
+# Functions
+
+```
+import 'dart:core';
+
+aFunction() {
+  print("I'm a function");
+}
+
+void explicitVoidReturnType() {
+  print("I'm also a function");
+}
+
+String aFunctionReturning() {
+  return "I'm a function";
+}
+
+// Arguments
+int sum(int a, int b) {
+  return a + b;
+}
+
+// Named Arguments (all of them or partial)
+int sum2({int? a, int? b}) {
+  if (a != null && b != null) {
+    return a + b;
+  } else {
+    return 0;
+  }
+}
+
+int sum3(int a, {required int? b}) {
+  return a + b!;
+}
+
+// How do you call sum?
+playingWithCalls() {
+  sum(4, 1);
+  // call with named parameters
+  sum2(b: 5, a: 10);
+  sum3(3, b: 4);
+}
+```
+
+# Lambda or anonymous functions
+
+Type is Function
+if no return is expected, we use void
+
+```
+Function myFunction = (int number, bool isReady) {};
+
+// Arrow functions are also possible if they have only one sentence
+
+Function myArrow = (int a, int b) => a + b;
+```
+
+# Classes
+
+Full support for OOP, we will use it a lot in Flutter
+There are no visibility modifiers; private properties start with \_
+
+```
+import 'dart:core';
+
+class Person {
+  // property
+  int id = 0;
+  // function - method
+  show() {
+    print("Person id: ${this.id}");
+  }
+}
+
+// new keyword is optional!
+final p = Person(); // Flutter way
+final q = new Person();
+
+// there is a Primary constructor, secondary constructors and a initializer block
+// The primary constructor is defined in the class name definition
+
+class Request {
+  int id = 0;
+  String url = "";
+
+  Request(int id, String url) {
+    this.id = id;
+    this.url = url;
+  }
+
+  // named constructors
+
+  Request.fromData(this.id, this.url);
+}
+
+we have shortcut for init constructor:
+Instead of this
+Request(int id, String url) {
+    this.id = id;
+    this.url = url;
+  }
+we have
+Request(this.id, this.url);
+
+class HttpRequest extends Request {
+  HttpRequest(int id, String url) : super(id, url);
+}
+
+// We can also use named parameters
+
+class Car {
+  int id;
+  String name;
+
+  Car({required this.id, required this.name});
+}
 ```

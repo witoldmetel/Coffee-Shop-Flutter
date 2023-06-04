@@ -30,7 +30,7 @@ class Request {
     this.url = url;
   }
 
-  // named constructores
+  // named constructors
 
   Request.fromData(this.id, this.url);
 }
