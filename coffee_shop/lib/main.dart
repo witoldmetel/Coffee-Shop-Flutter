@@ -1,3 +1,4 @@
+import 'package:coffee_shop/pages/offers_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -29,9 +30,9 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Image.asset("images/logo.png"),
-      ),
-    );
+        appBar: AppBar(
+          title: Image.asset("images/logo.png"),
+        ),
+        body: const OffersPage());
   }
 }
