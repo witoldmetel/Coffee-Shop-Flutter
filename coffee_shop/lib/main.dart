@@ -27,12 +27,53 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
+    Widget currentWidgetPage = const Text("WOW");
+
+    switch (selectedIndex) {
+      case 0:
+        currentWidgetPage = const Text("Menu Page");
+        break;
+      case 1:
+        currentWidgetPage = const OffersPage();
+        break;
+      case 2:
+        currentWidgetPage = const Text("Orders Page");
+        break;
+      default:
+    }
+
     return Scaffold(
         appBar: AppBar(
           title: Image.asset("images/logo.png"),
         ),
-        body: const OffersPage());
+        body: const OffersPage(),
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: selectedIndex,
+          onTap: (newIndex) {
+            setState(() {
+              selectedIndex = newIndex;
+            });
+          },
+          backgroundColor: Theme.of(context).primaryColor,
+          elevation: 24,
+          selectedItemColor: Colors.yellow.shade400,
+          unselectedItemColor: Colors.brown.shade50,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.coffee),
+              label: 'Menu',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.local_offer),
+              label: 'Offers',
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.shopping_cart_outlined), label: 'Order'),
+          ],
+        ));
   }
 }
