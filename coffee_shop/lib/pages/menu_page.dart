@@ -30,10 +30,11 @@ class MenuPage extends StatelessWidget {
                       itemCount: categories[index].products.length,
                       itemBuilder: (context, prodIndex) {
                         var product = categories[index].products[prodIndex];
+
                         return ProductItem(
                             product: product,
-                            onAdd: () {
-                              dataManager.cartAdd(product);
+                            onAdd: (addedProduct) {
+                              dataManager.cartAdd(addedProduct);
                             });
                       })
                 ],
@@ -70,7 +71,7 @@ class ProductItem extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.network(product.imageUrl),
+            Center(child: Image.network(product.imageUrl)),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -84,7 +85,7 @@ class ProductItem extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text("\$${product.price}"),
+                      child: Text("\$${product.price.toStringAsFixed(2)}"),
                     ),
                   ],
                 ),
