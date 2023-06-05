@@ -1,4 +1,7 @@
+import 'package:coffee_shop/datamanager.dart';
+import 'package:coffee_shop/pages/menu_page.dart';
 import 'package:coffee_shop/pages/offers_page.dart';
+import 'package:coffee_shop/pages/order_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -27,30 +30,35 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var dataManager = DataManager();
   var selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
+    Widget currentWidgetPage = const Text("WOW");
+
     switch (selectedIndex) {
       case 0:
+        currentWidgetPage = MenuPage(dataManager: dataManager);
         break;
       case 1:
+        currentWidgetPage = const OffersPage();
         break;
       case 2:
+        currentWidgetPage = OrderPage(dataManager: dataManager);
         break;
-      default:
     }
 
     return Scaffold(
         appBar: AppBar(
           title: Image.asset("images/logo.png"),
         ),
-        body: const OffersPage(),
+        body: currentWidgetPage,
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: selectedIndex,
           onTap: (newIndex) {
             setState(() {
-              selectedIndex = newIndex;
+              selectedIndex = newIndex; // changing the state
             });
           },
           backgroundColor: Theme.of(context).primaryColor,
