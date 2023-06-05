@@ -34,6 +34,11 @@ class Offer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // How to handle responsize design
+    // var size = MediaQuery.of(context).size;
+
+    // if (size.width>500) {}
+
     return SizedBox(
       height: 170,
       child: Padding(
